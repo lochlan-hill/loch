@@ -13,3 +13,20 @@ document.addEventListener('DOMContentLoaded', function() {
         projectList.appendChild(li);
     });
 });
+
+
+// Function to update the counter display
+function updateCounterDisplay(count) {
+    document.getElementById('counter').textContent = count;
+}
+
+// Get the current count from localStorage, or start at 0 if not set
+let count = localStorage.getItem('clickCount') ? parseInt(localStorage.getItem('clickCount')) : 0;
+updateCounterDisplay(count);
+
+// Add click event listener to the button
+document.getElementById('incrementButton').addEventListener('click', () => {
+    count++;
+    localStorage.setItem('clickCount', count);
+    updateCounterDisplay(count);
+});
